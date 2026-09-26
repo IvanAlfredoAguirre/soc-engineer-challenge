@@ -1,0 +1,81 @@
+[
+  {
+    "alert_id": "SIEM-1001",
+    "rule_name": "Multiple Failed Logins Followed By Success",
+    "timestamp_first_seen": "2026-08-15T03:12:05Z",
+    "timestamp_last_seen": "2026-08-15T03:47:15Z",
+    "entity": {
+      "user": "fmartinez",
+      "src_ip": "185.220.101.47"
+    },
+    "description": "12 failed login attempts followed by a successful login for user fmartinez from an external source within a 35-minute window.",
+    "siem_severity": "Medium",
+    "raw_event_count": 13
+  },
+  {
+    "alert_id": "SIEM-1002",
+    "rule_name": "Potential Port Scan Detected",
+    "timestamp_first_seen": "2026-08-15T02:00:00Z",
+    "timestamp_last_seen": "2026-08-15T02:10:00Z",
+    "entity": {
+      "src_ip": "10.50.2.15"
+    },
+    "description": "Source IP 10.50.2.15 generated connections to 7 internal hosts across 35 distinct destination ports within 10 minutes.",
+    "siem_severity": "High",
+    "raw_event_count": 35
+  },
+  {
+    "alert_id": "SIEM-1003",
+    "rule_name": "Impossible Travel Detected",
+    "timestamp_first_seen": "2026-08-15T09:15:00Z",
+    "timestamp_last_seen": "2026-08-15T09:52:00Z",
+    "entity": {
+      "user": "jrodriguez",
+      "src_ip": [
+        "200.45.10.33",
+        "85.214.20.12"
+      ]
+    },
+    "description": "User jrodriguez authenticated successfully from Argentina and Spain within a 37-minute window, a distance requiring physically impossible travel time.",
+    "siem_severity": "High",
+    "raw_event_count": 2
+  },
+  {
+    "alert_id": "SIEM-1004",
+    "rule_name": "Anomalous Periodic Outbound Connection",
+    "timestamp_first_seen": "2026-08-15T03:50:00Z",
+    "timestamp_last_seen": "2026-08-15T05:25:00Z",
+    "entity": {
+      "src_ip": "10.20.5.44",
+      "dst_ip": "45.146.164.110"
+    },
+    "description": "Host 10.20.5.44 established 20 low-volume outbound TCP connections to 45.146.164.110:443 at approximately 5-minute intervals.",
+    "siem_severity": "Low",
+    "raw_event_count": 20
+  },
+  {
+    "alert_id": "SIEM-1005",
+    "rule_name": "High Connection Rate From Single Source",
+    "timestamp_first_seen": "2026-08-15T00:00:00Z",
+    "timestamp_last_seen": "2026-08-15T23:55:00Z",
+    "entity": {
+      "src_ip": "10.50.9.9"
+    },
+    "description": "Source IP 10.50.9.9 generated a sustained high rate of outbound connections to internal hosts on port 5666 throughout the day.",
+    "siem_severity": "Medium",
+    "raw_event_count": 288
+  },
+  {
+    "alert_id": "SIEM-1006",
+    "rule_name": "Suspicious Use of certutil.exe",
+    "timestamp_first_seen": "2026-08-15T04:05:18Z",
+    "timestamp_last_seen": "2026-08-15T04:05:18Z",
+    "entity": {
+      "host": "WKS-FMARTINEZ-01",
+      "user": "fmartinez"
+    },
+    "description": "certutil.exe was used with -urlcache flag to download a remote file to a local temp directory on host WKS-FMARTINEZ-01.",
+    "siem_severity": "Medium",
+    "raw_event_count": 1
+  }
+]

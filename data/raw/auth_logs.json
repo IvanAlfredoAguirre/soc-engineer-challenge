@@ -1,0 +1,677 @@
+[
+  {
+    "timestamp": "2026-08-15T03:12:05Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:14:40Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:17:10Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:19:55Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:22:30Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:25:05Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:27:50Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:30:15Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:33:00Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:36:44Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:40:20Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:44:02Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_failed",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "failure_reason": "invalid_password"
+  },
+  {
+    "timestamp": "2026-08-15T03:47:15Z",
+    "user": "fmartinez",
+    "src_ip": "185.220.101.47",
+    "geo_country": "NL",
+    "event_type": "login_success",
+    "user_agent": "python-requests/2.31.0",
+    "mfa_used": false,
+    "app": "Google Workspace",
+    "note": "MFA prompt not triggered - legacy app password in use"
+  },
+  {
+    "timestamp": "2026-08-15T09:15:00Z",
+    "user": "jrodriguez",
+    "src_ip": "200.45.10.33",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+    "mfa_used": true,
+    "app": "Google Workspace",
+    "note": "Corporate VPN egress - Buenos Aires PoP"
+  },
+  {
+    "timestamp": "2026-08-15T09:52:00Z",
+    "user": "jrodriguez",
+    "src_ip": "85.214.20.12",
+    "geo_country": "ES",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+    "mfa_used": true,
+    "app": "Google Workspace",
+    "note": "Corporate VPN egress - Madrid PoP"
+  },
+  {
+    "timestamp": "2026-08-15T11:04:12Z",
+    "user": "fmartinez",
+    "src_ip": "10.20.5.44",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T11:07:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T11:18:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T11:26:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T11:29:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T11:47:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T12:00:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T12:04:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T12:10:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T12:13:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T12:18:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T13:00:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T13:01:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T13:04:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T13:27:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T13:37:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T14:01:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T14:02:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T14:18:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T14:30:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T14:46:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T15:07:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T15:14:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T15:41:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T15:42:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T15:44:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T16:06:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T16:12:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T16:14:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T16:24:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T16:34:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T17:00:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T17:00:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T17:08:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T17:15:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T17:22:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T18:12:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T18:24:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T18:27:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T18:28:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T18:43:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T19:11:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T19:13:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T19:14:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T19:26:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T19:44:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T20:17:00Z",
+    "user": "svc-backup",
+    "src_ip": "10.20.9.5",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T20:32:00Z",
+    "user": "mnunez",
+    "src_ip": "10.20.5.40",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T20:36:00Z",
+    "user": "lgomez",
+    "src_ip": "10.20.5.22",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T20:42:00Z",
+    "user": "jrodriguez",
+    "src_ip": "10.20.5.10",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  },
+  {
+    "timestamp": "2026-08-15T20:49:00Z",
+    "user": "kbrenner",
+    "src_ip": "10.20.5.31",
+    "geo_country": "AR",
+    "event_type": "login_success",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/126.0",
+    "mfa_used": true,
+    "app": "Google Workspace"
+  }
+]

