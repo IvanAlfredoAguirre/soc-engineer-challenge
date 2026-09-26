@@ -268,17 +268,17 @@ COLUMNAS_TABLA = ["timestamp", "source", "severity", "user", "host",
                   "event", "src_ip", "dst_ip", "detail"]
 COLUMNAS_EXPORT = ["timestamp", "timestamp_valid", "source", "severity",
                    "user", "host", "event", "src_ip", "dst_ip", "dst_port",
-                   "detail", "record_json"]
+                   "detail"]
 
 def filas_a_planas(filas):
-    """Vista plana IDENTICA a la consola + record_json (original completo,
-    serializado). Misma estructura en cada fila sin importar la fuente."""
+    """Vista plana IDENTICA a la consola. Misma estructura en cada fila
+    sin importar la fuente. Sin record_json: el registro original completo
+    esta disponible en consola con --detail, la opcion D o --format json."""
     planas = []
     for f in filas:
         fila = {k: f.get(k, "") for k in COLUMNAS_TABLA}
         fila["timestamp_valid"] = f["timestamp_valid"]
         fila["dst_port"] = f.get("dst_port", "")
-        fila["record_json"] = json.dumps(f["record"], ensure_ascii=False)
         planas.append(fila)
     return planas
 CAPS_TABLA = {"timestamp": 22, "source": 7, "severity": 10, "user": 16,

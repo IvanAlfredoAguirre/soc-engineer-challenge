@@ -58,10 +58,10 @@ del subcomando. Default: `data/raw` junto al repo.
 
 **Estructura del exportado:** las busquedas exportan la **misma vista plana
 de la consola** (`timestamp, timestamp_valid, source, severity, user, host,
-event, src_ip, dst_ip, dst_port, detail`) **mas `record_json`**: el registro
-original completo serializado en JSON. Cada fila tiene exactamente la misma
-estructura sin importar la fuente (auth, edr, siem o vpc mezcladas), y nada se
-pierde: todo campo original esta disponible parseando `record_json`.
+event, src_ip, dst_ip, dst_port, detail`). Cada fila tiene exactamente la
+misma estructura sin importar la fuente (auth, edr, siem o vpc mezcladas).
+El registro original completo no se exporta: para verlo sin truncar use
+`--detail`, la opcion `D` del modo interactivo o `--format json` en consola.
 Las agrupaciones exportan `value,count` y los resumenes sus columnas propias.
 
 **Nomenclatura de archivos exportados:** si el nombre no tiene extension, se
