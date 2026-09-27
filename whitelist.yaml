@@ -1,0 +1,48 @@
+# whitelist.yaml - IPs y rangos confiables por rol (Acme Fintech SOC).
+#
+# Gobierno:
+# - Toda entrada requiere justificacion, owner y fecha_revision.
+# - Revision trimestral: entradas sin revalidar se marcan para revision.
+# - Toda supresion de alerta causada por esta lista queda logueada.
+# - Las reglas del SIEM consultan SOLO el rol que les corresponde
+#   (ej. la regla de port scan consulta 'vulnerability_scanner', no toda la lista).
+
+whitelist:
+  - rol: vulnerability_scanner
+    descripcion: "Scanners de vulnerabilidades autorizados (jobs programados)"
+    owner: infra
+    fecha_revision: 2026-11-15
+    entradas:
+      - ip: 10.50.2.15
+        justificacion: "Qualys programado (note: qualys-scan-0815; sondas 64B, bytes_received=0, ventana 02:00-02:10). Confirmar contra CMDB."
+        estado: PROVISORIO
+
+  - rol: corporate_vpn
+    descripcion: "Egress de VPN corporativa (PoPs regionales)"
+    owner: infra
+    fecha_revision: 2026-11-15
+    entradas:
+      - cidr: 200.45.10.0/24
+        justificacion: "Egress VPN PoP Buenos Aires (1 evento con note 'Corporate VPN egress - Buenos Aires PoP'). Validar rango con Redes."
+        estado: PROVISORIO
+      - cidr: 85.214.20.0/24
+        justificacion: "Egress VPN PoP Madrid (1 evento con note 'Corporate VPN egress - Madrid PoP'). Validar rango con Redes."
+        estado: PROVISORIO
+
+  - rol: monitoring_tools
+    descripcion: "Servidores de monitoreo autorizados (Nagios/NRPE)"
+    owner: infra
+    fecha_revision: 2026-11-15
+    entradas:
+      - ip: 10.50.9.9
+        justificacion: "Nagios: 288 health checks NRPE/dia, puerto 5666, 48B/48B, destinos fijos conocidos. Confirmar contra CMDB."
+        estado: PROVISORIO
+
+  - rol: saas_egreso
+    descripcion: "Destinos SaaS corporativos conocidos (egreso autorizado a internet)"
+    owner: it-ops
+    fecha_revision: 2026-11-15
+    entradas:
+      - ip: 142.250.0.100
+        justificacion: "workspace.google.com - trafico corporativo legitimo (4.5KB sent / 22KB rec, regular durante el dia)"
+        estado: VALIDADO
