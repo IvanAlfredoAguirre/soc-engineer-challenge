@@ -152,7 +152,25 @@ python .\src\soc_tool.py correlate "upd.dat" --source edr --detail
 sola; la correlacion analitica requiere evidencia, contexto y proximidad
 temporal (ver `docs/correlacion.md`).
 
-### 3.6 `interactive` - consola interactiva
+### 3.6 `extract-iocs` - extraccion masiva de IOC (reputacion)
+
+```powershell
+python .\src\soc_tool.py extract-iocs --type ip
+python .\src\soc_tool.py extract-iocs --type hash --output hashes.csv --export-format csv
+python .\src\soc_tool.py extract-iocs --type ip --include-private
+```
+
+- Recorre **todas las fuentes** y extrae los IOC del tipo pedido:
+  - `--type ip`: IPv4 validas (octetos <= 255). **Solo publicas por default**
+    (excluye 10/8, 172.16/12, 192.168/16, 127/8, link-local); use
+    `--include-private` para incluirlas.
+  - `--type hash`: hex de 32 (MD5), 40 (SHA1) o 64 (SHA256) caracteres, con
+    limites de palabra para no contar un SHA256 tambien como MD5.
+- Salida agregada: `ioc, tipo, count, fuentes` (en cuales de los 4 logs
+  aparece). Lista para chequeo de reputacion (Threat Intel / VT / MISP).
+- Resultado exportable (`--output` o la opcion `E` del modo interactivo).
+
+### 3.7 `interactive` - consola interactiva
 
 ```powershell
 python .\src\soc_tool.py interactive
@@ -160,22 +178,25 @@ python .\src\soc_tool.py interactive
 
 | Tecla | Accion |
 | --- | --- |
-| `1` | Resumen SIEM |
-| `2` | Buscar (pide valor y, opcionalmente, fuente) |
-| `3` | Timeline del valor |
-| `4` | Correlate cruzado (con nota de no-causalidad) |
+| `1` | Resumen de alertas SIEM (por severidad, regla y hora) |
+| `2` | Buscar (IP, usuario, hash, host, dominio; pide fuente opcional) |
+| `3` | Linea de tiempo: eventos del valor en orden cronologico |
+| `4` | Correlacion entre fuentes: cuanto rastro tiene el valor en cada log (exploratoria, no causal) |
 | `5` | Agrupar por campo (resultado exportable) |
-| `6` | **Perfil de usuario**: todos sus datos cruzados (auth+edr+vpc+siem) + resumen de autenticaciones (exitos/fallos, MFA, paises, agentes) |
-| `7` | **Autenticaciones de un usuario**: analitico de login (tipos, MFA, geografia, UA top) |
+| `6` | **Perfil de un usuario** (expediente): todos sus datos cruzados (auth+edr+vpc+siem) + resumen de autenticaciones (exitos/fallos, MFA, paises, UA). Cubre el caso de solo-auth: es la opcion 2 restringida a `auth` |
+| `7` | **Extraer IOCs masivos**: todas las IPs o hashes del dataset (IPs publicas por default) para chequeo de reputacion. Exportable |
 | `E` | Exportar el **ultimo resultado** a CSV/JSON (`data/output/` por defecto) |
-| `D` | Ver registro original completo: numero de indice o `A` para todos |
+| `D` | Ver registro original completo (JSON sin truncar) del ultimo resultado, sea cual sea la consulta (1-7): numero de indice o `A` para todos |
 | `R` | Recargar fuentes desde disco |
 | `H` | Ayuda |
 | `Q` | Salir |
 
-**Ciclo post-consulta:** tras cada busqueda (2-7) el menu ofrece
-`[E]xportar resultado / [D]etalle / [N]ueva consulta / [Q]salir`, asi se filtra,
-exporta y vuelve a buscar sin salir del modo interactivo.
+**Ciclo post-consulta:** tras cada busqueda el menu ofrece
+`[E]xportar este resultado / [D]etalle de un registro / [N]ueva busqueda / [Q]salir`,
+asi se filtra, exporta y vuelve a buscar sin salir del modo interactivo.
+
+Todo el menu y la ayuda estan en espanol (las teclas se mantienen:
+numeros 1-7 y letras E/D/R/H/Q).
 
 Flujo tipico: opcion `6` -> usuario `fmartinez` -> revisar perfil -> `E` ->
 `perfil_fmartinez` -> `csv` -> `N` -> nueva consulta.

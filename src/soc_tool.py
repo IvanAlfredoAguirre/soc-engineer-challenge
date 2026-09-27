@@ -10,10 +10,6 @@ Fuentes esperadas en data/raw (o --data-dir):
   - vpc_flow_logs.json (vpc)         - edr_events.json (edr)
 Tambien acepta logs_soporte.zip sin descomprimir, JSONL y JSON envuelto en dict.
 
-SALIDA SIN RECORTES: las tablas envuelven el texto largo en varias lineas
-(nunca lo truncan). El registro original completo esta disponible con
---detail, la opcion D, o --format json. Una coincidencia textual NO demuestra
-causalidad. Los archivos de entrada nunca se modifican.
 """
 
 import argparse
@@ -54,7 +50,6 @@ SEVERITY_ORDER = {"critical": 0, "critica": 0, "high": 1, "alta": 1,
 # --------------------------------------------------------------------------
 
 def parse_json_text(texto, fname):
-    """JSON array, JSONL o dict envuelto. Lineas malformadas se reportan."""
     texto = texto.strip()
     if not texto:
         return []
@@ -87,7 +82,6 @@ def parse_json_text(texto, fname):
     return [x for x in data if isinstance(x, dict)]
 
 def _leer_zip(path_zip, pistas):
-    """Extrae del zip los .json cuyo nombre coincida con las pistas."""
     registros = []
     with zipfile.ZipFile(path_zip) as z:
         for nombre in z.namelist():
@@ -105,7 +99,6 @@ def normalize_source(source):
     return SOURCE_ALIASES[key]
 
 def load_source(source, data_dir):
-    """Carga una fuente: archivo esperado, cualquier .json con la pista, o .zip."""
     source = normalize_source(source)
     fname, pistas = SOURCES[source]
     data_dir = Path(data_dir)
@@ -146,7 +139,6 @@ def load_all_sources(data_dir):
 # --------------------------------------------------------------------------
 
 def get_nested_value(record, field):
-    """Campo simple o anidado ('entity.user'). Serializa dict/list como JSON."""
     actual = record
     for parte in str(field).split("."):
         if not isinstance(actual, dict):
@@ -166,8 +158,6 @@ def get_any(record, *fields):
     return ""
 
 def flatten_values(value):
-    """Solo VALORES (no claves) para que la busqueda no matchee por nombre
-    de campo. Conserva la estructura recorriendo dicts y listas."""
     if isinstance(value, dict):
         salida = []
         for v in value.values():
@@ -181,7 +171,6 @@ def flatten_values(value):
     return [str(value)]
 
 def search_records(records, query):
-    """Subcadena case-insensitive sobre los VALORES. Vacio -> sin resultados."""
     aguja = str(query).casefold().strip()
     if not aguja:
         return []
@@ -197,6 +186,55 @@ def search_all_sources(datasets, query, selected=None):
     return resultados
 
 # --------------------------------------------------------------------------
+# Extraccion masiva de IOC (para chequeo de reputacion / Threat Intel)
+# --------------------------------------------------------------------------
+
+import ipaddress
+import re
+
+IOC_PATTERNS = {
+    "ip": re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"),
+    "sha256": re.compile(r"(?<![0-9a-fA-F])[0-9a-fA-F]{64}(?![0-9a-fA-F])"),
+    "sha1":   re.compile(r"(?<![0-9a-fA-F])[0-9a-fA-F]{40}(?![0-9a-fA-F])"),
+    "md5":    re.compile(r"(?<![0-9a-fA-F])[0-9a-fA-F]{32}(?![0-9a-fA-F])"),
+}
+
+def extraer_iocs(datasets, tipo, include_private=False):
+    if tipo not in {"ip", "hash"}:
+        raise ValueError(f"Tipo de IOC invalido: {tipo} (use ip o hash)")
+    agregado = defaultdict(lambda: {"count": 0, "fuentes": set()})
+    for source, records in datasets.items():
+        for r in records:
+            texto = " ".join(flatten_values(r))
+            hallados = []
+            if tipo == "ip":
+                for m in IOC_PATTERNS["ip"].finditer(texto):
+                    try:
+                        ip = ipaddress.ip_address(m.group())
+                    except ValueError:
+                        continue  # octetos > 255 (p. ej. versiones "2.31.0")
+                    if ip.version != 4:
+                        continue
+                    if not include_private and ip.is_private:
+                        continue
+                    hallados.append(("ip", str(ip)))
+            else:  # hash: sha256 primero; los limites (?<![0-9a-f]) evitan
+                   # que un hex largo se cuente tambien como md5/sha1
+                for nombre in ("sha256", "sha1", "md5"):
+                    for m in IOC_PATTERNS[nombre].finditer(texto):
+                        hallados.append((nombre, m.group().lower()))
+            for subtipo, valor in hallados:
+                clave = f"{subtipo}:{valor}"
+                agregado[clave]["count"] += 1
+                agregado[clave]["fuentes"].add(source)
+    filas = [{"ioc": k.split(":", 1)[1], "tipo": k.split(":", 1)[0],
+              "count": v["count"],
+              "fuentes": ",".join(sorted(v["fuentes"]))}
+             for k, v in agregado.items()]
+    filas.sort(key=lambda f: (-f["count"], f["ioc"]))
+    return filas
+
+# --------------------------------------------------------------------------
 # Timestamps y filas
 # --------------------------------------------------------------------------
 
@@ -209,7 +247,6 @@ def timestamp_value(record):
     return None
 
 def parse_timestamp_value(value):
-    """ISO-8601 (acepta 'Z') a UTC. None si falta/invalido. No altera nada."""
     if not value:
         return None
     try:
@@ -221,7 +258,6 @@ def parse_timestamp_value(value):
         return None
 
 def event_row(source, record):
-    """Vista plana. 'record' conserva la evidencia original intacta."""
     ts = timestamp_value(record)
     proceso = get_any(record, "process_name")
     detalle = get_any(record, "description", "command_line", "failure_reason",
@@ -251,7 +287,6 @@ def build_rows(records_by_source):
     return filas
 
 def sort_rows(rows, order="asc"):
-    """Cronologico. Invalidos al final SIEMPRE (no se descartan)."""
     validas = [f for f in rows if f["timestamp_valid"]]
     invalidas = [f for f in rows if not f["timestamp_valid"]]
     validas.sort(key=lambda f: (parse_timestamp_value(f["timestamp"]),
@@ -271,9 +306,6 @@ COLUMNAS_EXPORT = ["timestamp", "timestamp_valid", "source", "severity",
                    "detail"]
 
 def filas_a_planas(filas):
-    """Vista plana IDENTICA a la consola. Misma estructura en cada fila
-    sin importar la fuente. Sin record_json: el registro original completo
-    esta disponible en consola con --detail, la opcion D o --format json."""
     planas = []
     for f in filas:
         fila = {k: f.get(k, "") for k in COLUMNAS_TABLA}
@@ -286,8 +318,6 @@ CAPS_TABLA = {"timestamp": 22, "source": 7, "severity": 10, "user": 16,
               "detail": 50}
 
 def _ajustar_ancho(col_w, term, separadores):
-    """Encoge PROPORCIONALMENTE hasta caber en el terminal (min 10 c/u),
-    y redistribuye el remanente a las columnas mas anchas."""
     disponible = term - separadores
     if sum(col_w) <= disponible:
         return col_w
@@ -302,8 +332,6 @@ def _ajustar_ancho(col_w, term, separadores):
     return ajustados
 
 def print_table(rows, columns, widths=None):
-    """Tabla con ENVOLTURA de texto: ningun campo se trunca. Un registro
-    ocupa tantas lineas fisicas como necesite su campo mas largo."""
     if not rows:
         print("Sin resultados.")
         return
@@ -361,7 +389,6 @@ def print_rows(rows, output_format="table", show_detail=False):
 # --------------------------------------------------------------------------
 
 def resolver_ruta_salida(nombre):
-    """Nombre simple -> data/output/. Ruta explicita -> respecto del cwd."""
     p = Path(nombre)
     if p.parent == Path(".") and len(p.parts) == 1:
         p = DEFAULT_OUTPUT_DIR / p.name
@@ -370,8 +397,6 @@ def resolver_ruta_salida(nombre):
     return p
 
 def export_data(data, output_path, output_format=None):
-    """Exporta a CSV (utf-8-sig, Excel) o JSON. Informa ruta abs y cantidad.
-    Devuelve el Path o None. Solo informa exito si realmente escribio."""
     if not output_path:
         return None
     registros = data if isinstance(data, list) else [data]
@@ -464,7 +489,6 @@ def command_summary(args):
         export_data(campos, args.output, args.export_format)
 
 def _comando_busqueda(args, datasets, errors, titulo):
-    """Nucleo comun de search-ioc / correlate / timeline."""
     selected = None
     if getattr(args, "source", "all") != "all":
         selected = [normalize_source(args.source)]
@@ -521,35 +545,56 @@ def command_group(args):
                 getattr(args, "export_format", None))
     return len(filas)
 
+def command_extract_iocs(args):
+    datasets, errors = load_all_sources(Path(args.data_dir))
+    if args.source != "all":
+        source = normalize_source(args.source)
+        datasets = {source: datasets.get(source, [])}
+    filas = extraer_iocs(datasets, args.type,
+                         include_private=args.include_private)
+    filas = apply_limit(filas, args.limit)
+    priv = " (incluye privadas)" if args.include_private else " (solo publicas)"
+    print(f"=== EXTRACCION MASIVA DE IOC: {args.type.upper()}{priv} ===")
+    print(f"IOC unicos encontrados: {len(filas)}")
+    print_table(filas, ["ioc", "tipo", "count", "fuentes"],
+                {"ioc": 44, "tipo": 8, "count": 8, "fuentes": 24})
+    print("\n[i] Liste para chequeo de reputacion (Threat Intel / VT / MISP).")
+    print_source_errors(errors)
+    export_data(filas, getattr(args, "output", None),
+                getattr(args, "export_format", None))
+    return len(filas)
+
 # --------------------------------------------------------------------------
 # Modo interactivo
 # --------------------------------------------------------------------------
 
 AYUDA = """
-Comandos del menu:
-  1  Resumen SIEM (severidades, reglas y listado de alertas).
-  2  Buscar texto/IOC en una fuente o en todas.
-  3  Timeline cronologico de un valor.
-  4  Correlate: busqueda exploratoria cruzada (NO causal).
-  5  Agrupar registros por un campo (resultado exportable).
-  6  Perfil de usuario: TODOS sus datos cruzados (auth+edr+vpc+siem)
-     con resumen de autenticaciones.
-  7  Autenticaciones de un usuario: exitos/fallos, MFA, paises, agentes.
-  E  Exportar el ultimo resultado (CSV/JSON, data/output/ por defecto).
-  D  Ver registro(s) original(es) completo(s): numero o 'A' para todos.
-  R  Recargar fuentes desde disco.
-  H  Esta ayuda.
-  Q  Salir.
+Comandos del menu (modo interactivo):
+  1  Resumen de alertas SIEM .... vista del lote: por severidad, regla y hora
+  2  Buscar  ................... busca un valor (IP, usuario, hash, host,
+                                 dominio) en una fuente o en todas
+  3  Linea de tiempo ............ los eventos de un valor en orden cronologico
+  4  Correlacion entre fuentes .. cuanto rastro tiene un valor en cada log
+                                 (exploratoria, NO prueba causalidad)
+  5  Agrupar por campo .......... conteo de eventos por cualquier campo
+  6  Perfil de un usuario ....... expediente completo: todos sus eventos en
+                                 las 4 fuentes + resumen de autenticaciones
+  7  Extraer IOCs masivos ....... todas las IPs o hashes del dataset para
+                                 chequeo de reputacion (IPs publicas por default)
+  E  Exportar ultimo resultado .. CSV/JSON a data/output/ (tras una consulta)
+  D  Detalle de la ultima consulta  registro original completo en JSON,
+                                 sin truncar: elige numero o 'A' para todos
+  R  Recargar fuentes .......... relee los JSON desde disco
+  H  Esta ayuda
+  Q  Salir
 
-Tras cada consulta se ofrece: exportar el resultado, ver detalle o
+Tras cada consulta se ofrece: exportar el resultado, ver el detalle o
 hacer una nueva busqueda. Las consultas se ingresan en tiempo de
 ejecucion; no hay IOC prefijados. Las coincidencias textuales no
 demuestran causalidad.
 """
 
 def _pedir_exportacion(registros, export_rows=None):
-    """Exporta la vista plana (misma estructura que la consola) si hay;
-    si no, los registros tal cual."""
     datos = export_rows if export_rows else registros
     nombre = input("Nombre de archivo (ENTER=resultado): ").strip() \
         or "resultado"
@@ -582,12 +627,11 @@ def _pedir_detalle(registros):
         print(json.dumps(record, ensure_ascii=False, indent=2))
 
 def _menu_post_consulta(estado):
-    """Tras filtrar resultados: ofrece exportar, ver detalle o nueva busqueda."""
     while True:
         try:
             accion = input(
-                "[E]xportar resultado  [D]etalle  [N]ueva consulta  "
-                "[Q]salir\n> ").strip().casefold()
+                "[E]xportar este resultado  [D]etalle de un registro  "
+                "[N]ueva busqueda  [Q]salir\n> ").strip().casefold()
         except (EOFError, KeyboardInterrupt):
             print("\nSaliendo.")
             raise SystemExit(0)
@@ -600,7 +644,6 @@ def _menu_post_consulta(estado):
             return accion not in {"q", "salir"}
 
 def _resumen_auth(hits):
-    """Mini-analitico de autenticaciones para el perfil de usuario."""
     if not hits:
         return
     tipos = Counter(str(h.get("event_type", "?")) for h in hits)
@@ -647,9 +690,13 @@ def menu_interactivo(data_dir):
     while True:
         try:
             opcion = input(
-                "\n[1] Resumen SIEM  [2] Buscar  [3] Timeline  [4] Correlate\n"
-                "[5] Agrupar  [6] Perfil usuario  [7] Autenticaciones\n"
-                "[E] Exportar  [D] Detalle  [R] Recargar  [H] Ayuda  [Q] Salir\n"
+                "\n--- MENU ---\n"
+                "[1] Resumen SIEM        [2] Buscar\n"
+                "[3] Linea de tiempo     [4] Correlacion entre fuentes\n"
+                "[5] Agrupar por campo   [6] Perfil de un usuario\n"
+                "[7] Extraer IOCs masivos (IPs/hashes)\n"
+                "[E] Exportar ultimo resultado   [D] Detalle de la ultima consulta\n"
+                "[R] Recargar fuentes    [H] Ayuda    [Q] Salir\n"
                 "> ").strip().casefold()
         except (EOFError, KeyboardInterrupt):
             print("\nSaliendo.")
@@ -761,22 +808,25 @@ def menu_interactivo(data_dir):
                 return
             continue
 
-        if opcion == "7":  # Autenticaciones de un usuario
-            usuario = input("Usuario: ").strip()
-            if not usuario:
-                print("[!] El usuario no puede estar vacio.")
+        if opcion == "7":  # Extraccion masiva de IOCs para reputacion
+            tipo = input("Tipo de IOC a extraer [ip/hash] (ip): "
+                         ).strip().casefold() or "ip"
+            if tipo not in {"ip", "hash"}:
+                print("[!] Tipo invalido; use ip o hash.")
                 continue
-            hits = search_records(datasets.get("auth", []), usuario)
-            estado["records"] = list(hits)
-            filas_auth = (sort_rows(build_rows({"auth": hits}), "asc")
-                          if hits else [])
-            estado["filas"] = filas_auth
-            estado["export_rows"] = filas_a_planas(filas_auth)
-            print(f"\n=== AUTENTICACIONES DE '{usuario}' ===")
-            print(f"Eventos: {len(hits)}")
-            _resumen_auth(hits)
-            if hits:
-                print_rows(filas_auth, "table")
+            privadas = False
+            if tipo == "ip":
+                privadas = input(
+                    "Incluir IPs privadas? [s/N]: ").strip().casefold() == "s"
+            filas = extraer_iocs(datasets, tipo, include_private=privadas)
+            estado["records"], estado["filas"] = filas, []
+            estado["export_rows"] = filas  # ya es una vista plana
+            alcance = "incl. privadas" if privadas else "solo publicas"
+            print(f"\n=== IOCs {tipo.upper()} extraidos ({alcance}): "
+                  f"{len(filas)} unicos ===")
+            print_table(filas, ["ioc", "tipo", "count", "fuentes"],
+                        {"ioc": 44, "tipo": 8, "count": 8, "fuentes": 24})
+            print("\n[i] Liste para chequeo de reputacion. Exporte con E.")
             seguir = _menu_post_consulta(estado)
             if not seguir:
                 return
@@ -855,6 +905,19 @@ def build_parser():
     add_output_options(p)
     p.set_defaults(func=command_correlate)
 
+    p = subs.add_parser("extract-iocs", aliases=["extraer"], parents=[common],
+                        help="Extraccion masiva de IOC para reputacion.")
+    p.add_argument("--type", choices=["ip", "hash"], required=True,
+                   help="Tipo de IOC a extraer de todas las fuentes.")
+    p.add_argument("--source", default="all",
+                   help="Restringir a una fuente (default: all).")
+    p.add_argument("--include-private", action="store_true",
+                   help="Incluir IPs privadas (default: solo publicas).")
+    p.add_argument("--limit", type=int, default=None)
+    p.add_argument("--output")
+    p.add_argument("--export-format", choices=["json", "csv"])
+    p.set_defaults(func=command_extract_iocs)
+
     p = subs.add_parser("timeline", parents=[common],
                         help="Linea de tiempo por coincidencia textual.")
     p.add_argument("query", help="Usuario, IP, host, hash, texto.")
@@ -879,7 +942,8 @@ def main(argv=None):
         sys.exit(2)
     # Codigos: 1 = consulta sin coincidencias (busquedas), no es un fallo.
     if isinstance(resultado, int) and resultado == 0 and \
-       args.command in ("search-ioc", "buscar", "correlate", "timeline"):
+       args.command in ("search-ioc", "buscar", "correlate", "timeline",
+                        "extract-iocs", "extraer"):
         sys.exit(1)
 
 if __name__ == "__main__":
