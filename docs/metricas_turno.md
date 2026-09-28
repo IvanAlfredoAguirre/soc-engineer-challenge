@@ -39,5 +39,4 @@ pero debe cerrarse antes de la proxima revision trimestral.
   + staging + exfiltracion)
 - 3 ajustes de regla (ver ajuste_reglas.md)
 - 3 reglas nuevas propuestas (ver regla_nueva.md)
-- 4 IOCs para bloqueo: 185.220.101.47, 194.36.191.55, 45.146.164.110
-  (+ cdn-edge-sync.net)
+- 4 IOCs para bloqueo: 185.220.101.47, 194.36.191.55, 45.146.164.110.

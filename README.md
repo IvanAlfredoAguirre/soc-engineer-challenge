@@ -74,7 +74,7 @@ La severidad se asigna a partir del análisis del caso y de su impacto. No se to
 1. **Carga y parsing:** se procesan las cuatro fuentes con `soc_tool.py`, manteniendo intactos los archivos originales.
 2. **Triage:** se revisa cada alerta y se deja registrada su clasificación junto con la evidencia relevante de los logs.
 3. **Correlación:** se relacionan eventos por entidad compartida, continuidad temporal y secuencia lógica. No alcanza con que dos eventos tengan un texto parecido.
-4. **Ajuste de reglas:** se intervienen únicamente las tres reglas para las que se encontró evidencia de ruido. Las exclusiones se definen por rol y se administran mediante una whitelist, dejando explícito qué riesgo de falso negativo puede introducir cada excepción.
+4. **Ajuste de reglas:** se intervienen únicamente las tres reglas para las que se encontró evidencia de ruido. 
 5. **Nuevas detecciones:** se proponen tres reglas para patrones que aparecen en los logs y no cuentan con cobertura suficiente: persistencia mediante `schtasks` y payload encubierto, staging con un archivo comprimido protegido por contraseña en `Temp`, y exfiltración a partir del volumen de tráfico saliente.
 6. **Gestión de la whitelist:** las excepciones se organizan en YAML por rol, con justificación, responsable y fecha de revisión. Las entradas se mantienen como **PROVISORIAS** hasta validarlas contra el inventario.
 
@@ -85,7 +85,6 @@ La severidad se asigna a partir del análisis del caso y de su impacto. No se to
 | `185.220.101.47`    | Origen del brute force                        | `auth_logs`, SIEM-1001                    |
 | `194.36.191.55`     | Descarga del payload                          | `edr_events`, `vpc_flow_logs`, SIEM-1006  |
 | `45.146.164.110`    | C2 y exfiltración de 187 MB                   | `vpc_flow_logs`, SIEM-1004                |
-| `cdn-edge-sync.net` | SNI del C2, con dominio que simula ser un CDN | `vpc_flow_logs` (nota)                    |
 | `10.20.5.44`        | Equipo comprometido: `WKS-FMARTINEZ-01`       | `edr_events`, `vpc_flow_logs`             |
 | `fmartinez`         | Cuenta comprometida                           | `auth_logs`, `edr_events`                 |
 

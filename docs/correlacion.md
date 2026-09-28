@@ -35,8 +35,7 @@ Criterio aplicado:
 
 Acciones:
 
-1. Bloqueo de IOCs: 185.220.101.47, 194.36.191.55 y 45.146.164.110
-(cdn-edge-sync.net).
+1. Bloqueo de IOCs: 185.220.101.47, 194.36.191.55 y 45.146.164.110.
 2. Identidad: reset de credencial de fmartinez y blanqueo de MFA. 
 Preventivo: blanqueo de todas las claves del colaborador en otros sistemas (una vez dentro, el atacante
 pudo encontrar credenciales adicionales del usuario).
